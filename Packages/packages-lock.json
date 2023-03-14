@@ -144,6 +144,12 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.unity.xr-line-renderer": {
+      "version": "file:C:/Users/linus/Desktop/XRLineRenderer-main",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {}
+    },
     "com.unity.xr.core-utils": {
       "version": "2.0.1",
       "depth": 1,
