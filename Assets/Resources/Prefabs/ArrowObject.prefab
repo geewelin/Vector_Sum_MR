@@ -310,7 +310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de13581fc300cf844aa9c21ce96574e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ArrowHead: {fileID: 401718796781583467}
+  ArrowGrab: {fileID: 401718796781583467}
 --- !u!1 &401718798350665003
 GameObject:
   m_ObjectHideFlags: 0
@@ -409,15 +409,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Materials:
   - {fileID: 2100000, guid: dd3701db925467648931a23810852797, type: 2}
-  m_Width: 0.1
+  m_Width: 0.02
   m_WidthCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
+      time: 1
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0

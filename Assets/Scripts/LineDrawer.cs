@@ -8,9 +8,9 @@ public class LineDrawer : MonoBehaviour
     private XRLineRenderer xr_renderer;
     private bool grabbed;
 
-    [SerializeField] public GameObject ArrowHead;
+    [SerializeField] public GameObject ArrowGrab;
 
-    private GameObject pfArrowObject;
+    private GameObject pfArrowObject, pfArrowHead;
 
 
     // Start is called before the first frame update
@@ -27,7 +27,7 @@ public class LineDrawer : MonoBehaviour
         if (grabbed)
         {
 
-            xr_renderer.SetPosition(1, ArrowHead.transform.position - this.transform.position);
+            xr_renderer.SetPosition(1, ArrowGrab.transform.position - this.transform.position);
         }
     }
 
@@ -47,12 +47,17 @@ public class LineDrawer : MonoBehaviour
     public void SetEndingPoint()
     {
 
+        pfArrowHead = Resources.Load("Prefabs/Pfeilspitze") as GameObject;
+        GameObject ArrowHead = Instantiate(pfArrowHead, this.transform);
+        ArrowHead.transform.localPosition = ArrowGrab.transform.position - this.transform.position;
+        ArrowHead.transform.localRotation = Quaternion.LookRotation(ArrowHead.transform.localPosition);
+
         pfArrowObject = Resources.Load("Prefabs/ArrowObject") as GameObject;
-        Instantiate(pfArrowObject, ArrowHead.transform.position, Quaternion.identity);
+        Instantiate(pfArrowObject, ArrowGrab.transform.position, Quaternion.identity);
 
 
         grabbed = false;
-        ArrowHead.SetActive(false);
+        ArrowGrab.SetActive(false);
 
 
     }
