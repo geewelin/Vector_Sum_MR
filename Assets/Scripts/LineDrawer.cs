@@ -56,6 +56,10 @@ public class LineDrawer : MonoBehaviour
         Instantiate(pfArrowObject, ArrowGrab.transform.position, Quaternion.identity);
 
 
+        //SumVector Endpunkt updaten
+        SumVectorManager.Instance.SetEndingPoint(ArrowHead.transform.position);
+
+
         grabbed = false;
         ArrowGrab.SetActive(false);
 

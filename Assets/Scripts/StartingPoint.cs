@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class StartingPoint : MonoBehaviour
 {
 
@@ -25,5 +24,9 @@ public class StartingPoint : MonoBehaviour
         pfArrowObject = Resources.Load("Prefabs/ArrowObject") as GameObject;
         Instantiate(pfArrowObject, this.transform.position, Quaternion.identity);
         this.GetComponent<UnityEngine.XR.Interaction.Toolkit.XRGrabInteractable>().enabled = false;
+
+
+        //SumVector Startpunkt setzen
+        SumVectorManager.Instance.SetStartingPoint(this.transform.position);
     }
 }
