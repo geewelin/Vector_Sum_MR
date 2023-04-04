@@ -27,6 +27,6 @@ public class StartingPoint : MonoBehaviour
 
 
         //SumVector Startpunkt setzen
-        SumVectorManager.Instance.SetStartingPoint(this.transform.position);
+        ToggleInformationManager.Instance.SetStartingPoint(this.transform.position);
     }
 }

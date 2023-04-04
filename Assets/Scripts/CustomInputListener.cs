@@ -24,13 +24,13 @@ public class CustomInputListener : MonoBehaviour
     private void Draw(InputAction.CallbackContext context)
     {
         Debug.Log("TriggerPressed started!");
-        SumVectorManager.Instance.Draw();
+        ToggleInformationManager.Instance.Draw();
     }
 
     private void Hide(InputAction.CallbackContext context)
     {
         Debug.Log("TriggerPressed ended!");
-        SumVectorManager.Instance.Hide();
+        ToggleInformationManager.Instance.Hide();
     }
 
 

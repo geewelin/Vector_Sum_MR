@@ -7,10 +7,11 @@ public class LineDrawer : MonoBehaviour
 {
     private XRLineRenderer xr_renderer;
     private bool grabbed;
+    private static int arrowCount = 0;
 
     [SerializeField] public GameObject ArrowGrab;
 
-    private GameObject pfArrowObject, pfArrowHead;
+    private GameObject pfArrowObject, pfArrowHead, pfVecDescription;
 
 
     // Start is called before the first frame update
@@ -46,6 +47,7 @@ public class LineDrawer : MonoBehaviour
 
     public void SetEndingPoint()
     {
+        LineDrawer.arrowCount += 1;
 
         pfArrowHead = Resources.Load("Prefabs/Pfeilspitze") as GameObject;
         GameObject ArrowHead = Instantiate(pfArrowHead, this.transform);
@@ -57,8 +59,25 @@ public class LineDrawer : MonoBehaviour
 
 
         //SumVector Endpunkt updaten
-        SumVectorManager.Instance.SetEndingPoint(ArrowHead.transform.position);
+        ToggleInformationManager.Instance.SetEndingPoint(ArrowHead.transform.position);
 
+
+
+
+        //VectorDescription erstellen
+        pfVecDescription = Resources.Load("Prefabs/VectorDescription") as GameObject;
+        GameObject vecDescription = Instantiate(pfVecDescription, this.transform);
+        vecDescription.transform.localPosition = (ArrowGrab.transform.position - this.transform.position) / 2f; //In die Mitte des Vectors positionieren
+        vecDescription.transform.localRotation = Quaternion.LookRotation(ArrowHead.transform.localPosition); //Ausrichtung zur Vectorspitze
+        Vector3 vecTranslation = new(0f, -0.01f, 0f);
+        vecDescription.transform.Translate(vecTranslation); //Position leicht unter Vector schieben
+        vecDescription.GetComponent<VectorDescription>().Set("v"+LineDrawer.arrowCount, ArrowGrab.transform.position - this.transform.position); //Parameter setzen
+        vecDescription.SetActive(false);
+
+
+        //platzierten Vector Manager hinzufügen
+        ToggleInformationManager.Instance.AddPlacedVectorDescription(vecDescription);
+        
 
         grabbed = false;
         ArrowGrab.SetActive(false);
