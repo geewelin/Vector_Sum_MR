@@ -136,6 +136,12 @@ public class ToggleInformationManager : MonoBehaviour
         //TODO: destroy earlier description object
     }
 
+    public void Reset()
+    {
+        
+    }
+
+
 
 
 }

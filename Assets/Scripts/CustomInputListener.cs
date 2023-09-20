@@ -2,16 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class CustomInputListener : MonoBehaviour
 {
 
-    public InputActionReference toggleReference = null;
+    public InputActionReference toggleReference = null; //reference for toggle vector information
+    public InputActionReference resetReference = null; //reference for resetting vectors
 
     private void Awake()
     {
         toggleReference.action.started += Draw;
         toggleReference.action.canceled += Hide;
+
+        resetReference.action.started += ResetScene; 
 
     }
 
@@ -19,6 +23,8 @@ public class CustomInputListener : MonoBehaviour
     {
         toggleReference.action.started -= Draw;
         toggleReference.action.canceled -= Hide;
+
+        resetReference.action.started -= ResetScene;
     }
 
     private void Draw(InputAction.CallbackContext context)
@@ -31,6 +37,12 @@ public class CustomInputListener : MonoBehaviour
     {
         Debug.Log("TriggerPressed ended!");
         ToggleInformationManager.Instance.Hide();
+    }
+
+    private void ResetScene(InputAction.CallbackContext context)
+    {
+        Debug.Log("TriggerPressed performed!");
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
     }
 
 

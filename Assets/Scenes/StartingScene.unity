@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toggleReference: {fileID: -6183853695973051453, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  resetReference: {fileID: 804713327552648495, guid: c348712bda248c246b8c49b3db54643f, type: 3}
 --- !u!4 &216155827
 Transform:
   m_ObjectHideFlags: 0
@@ -1732,7 +1733,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1681351014}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0.5}
   m_LocalScale: {x: 0.07, y: 0.07, z: 0.07}
   m_ConstrainProportionsScale: 1
   m_Children: []
